@@ -1,0 +1,44 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<div class="enter_btn">
+    <h2>Step1</h2> 
+    <h3>芸能人の写真をアップロードしてください</h3>
+    <form action = "/upload" method="post" enctype="multipart/form-data">
+        <!-- <label>
+            <input type="file" id = "upload_files" name = "upload_files" multiple="multiple">
+        </label> -->
+        <div class="custom-file">
+            <input type="file" id = "upload_files" name = "upload_files" multiple="multiple" class="custom-file-input" required>
+            <label class="custom-file-label" for="validatedCustomFile">Choose entertainers face images...</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>
+        </div>
+            <input type="submit" class="form-control btn btn-primary">
+    </form>
+
+    {% if enter_images %}
+    {% for path in enter_images %}
+        <div>
+        <img src="images/{{ path }}" style="margin-top: 10px; vertical-align: bottom; width: 200px;">
+        {{ path }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+<div class="user_btn">
+    <h2>Step2</h2>
+    <h3>あなたの写真をアップロードしてください</h3>
+    <form action = "/upload_user" method="post" enctype="multipart/form-data">
+        <!-- <p><input type="file" id = "upload_user_file" name = "upload_user_file" multiple="multiple">
+            <input type="submit" class="form-control btn btn-primary"> -->
+        <div class="custom-file">
+            <input type="file" id = "upload_user_file" name = "upload_user_file" multiple="multiple" class="custom-file-input" required>
+            <label class="custom-file-label" for="validatedCustomFile">Choose your face image...</label>
+            <div class="invalid-feedback">Example invalid custom file feedback</div>
+        </div>
+            <input type="submit" class="form-control btn btn-primary">
+    </form>
+</div>
+{% endblock %}
